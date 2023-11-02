@@ -34,4 +34,14 @@ public class RomanNumeralsToNumbersTest {
         IllegalArgumentException ex = assertThrowsExactly(IllegalArgumentException.class, () -> suit.convert("zzvi"));
         assertEquals("Invalid argument been detected, please use values within expected range [M, D, C, L, X, V, I].", ex.getMessage());
     }
+
+    @Test
+    public void sendValidRomanNumeralUnitIExpectConvertedToOne() {
+        assertEquals(1, suit.convert("I"));
+    }
+
+    @Test
+    public void sendValidRomanNumeralUnitIXExpectConvertedToNine() {
+        assertEquals(9, suit.convert("IX"));
+    }
 }
