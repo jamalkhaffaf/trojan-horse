@@ -47,4 +47,24 @@ public class NumbersToRomanNumeralsTest {
     public void tenNumbersSendNumberFiftyFiveExpectCorrectRomanNumeralLVTest() {
         assertEquals("LV", suit.covert(55));
     }
+
+    @Test
+    public void hundredNumersSendNumberHundredExpectCorrectRomanNumeralCTest() {
+        assertEquals("C", suit.covert(100));
+    }
+
+    @Test
+    public void hundredNumersSendNumberNineHundredExpectCorrectRomanNumeralCMTest() {
+        assertEquals("CM", suit.covert(900));
+    }
+
+    @Test
+    public void hundredNumersSendNumberFiveHundredAndFiftyFiveExpectCorrectRomanNumeralDLVTest() {
+        assertEquals("DLV", suit.covert(555));
+    }
+
+    @Test
+    public void hundredNumersSendNumberFiveHundredAndFiveExpectCorrectRomanNumeralDVTest() {
+        assertEquals("DV", suit.covert(505));
+    }
 }
