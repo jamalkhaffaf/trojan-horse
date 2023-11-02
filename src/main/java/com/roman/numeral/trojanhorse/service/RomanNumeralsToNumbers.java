@@ -25,7 +25,6 @@ public class RomanNumeralsToNumbers {
         romanToNumberMap.put('D', 500);
         romanToNumberMap.put('M', 1000);
         
-        // ex. IX
         int result = 0;
         for (int i = 0; i < romanNumeral.length(); i++) {
             if (i > 0 && romanToNumberMap.get(romanNumeral.charAt(i)) > romanToNumberMap.get(romanNumeral.charAt(i - 1))) {
