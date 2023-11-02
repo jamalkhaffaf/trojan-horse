@@ -10,8 +10,9 @@ public class NumbersToRomanNumerals {
 
         String[] romanUnits = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
         String[] romanTens = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+        String[] romanHundreds = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
 
-        String result = romanTens[(number % 100) / 10] + romanUnits[number % 10];
+        String result = romanHundreds[(number % 1000) / 100] + romanTens[(number % 100) / 10] + romanUnits[number % 10];
 
         return result;
     }
