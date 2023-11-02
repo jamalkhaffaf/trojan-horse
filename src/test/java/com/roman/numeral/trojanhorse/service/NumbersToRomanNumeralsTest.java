@@ -12,79 +12,79 @@ public class NumbersToRomanNumeralsTest {
     NumbersToRomanNumerals suit = new NumbersToRomanNumerals();
 
     @Test
-    public void lessThanOneTest() {
+    public void sendNumerValueLessThanOneExpectIllegalArgumentExceptionTest() {
         IllegalArgumentException ex = assertThrowsExactly(IllegalArgumentException.class, () -> suit.covert(0));
         assertEquals("Only Numbers Greater Than 0 And Less Than 3001 Are Accepted!", ex.getMessage());
     }
 
     @Test
-    public void moreThanThreeThousandTest() {
+    public void sendNumberValueMoreThanThreeThousandExpectIllegalArgumentExceptionTest() {
         IllegalArgumentException ex = assertThrowsExactly(IllegalArgumentException.class, () -> suit.covert(3001));
         assertEquals("Only Numbers Greater Than 0 And Less Than 3001 Are Accepted!", ex.getMessage());
     }
 
     @Test
-    public void unitNumbersSendNumberOneExpectCorrectRomanNumeralITest() {
+    public void sendUnitNumberValueOfOneExpectCorrectRomanNumeralValueOfITest() {
         assertEquals("I", suit.covert(1));
     }
 
     @Test
-    public void unitNumbersSendNumberNineExpectCorrectRomanNumeralIXTest() {
+    public void sendUnitNumberValueOfNineExpectCorrectRomanNumeralValueOfIXTest() {
         assertEquals("IX", suit.covert(9));
     }
 
     @Test
-    public void tenNumbersSendNumberTenExpectCorrectRomanNumeralXTest() {
+    public void sendTenNumberValueOfTenExpectCorrectRomanNumeralValueOfXTest() {
         assertEquals("X", suit.covert(10));
     }
 
     @Test
-    public void tenNumbersSendNumberNinetyExpectCorrectRomanNumeralXCTest() {
+    public void sendTenNumberValueOfNinetyExpectCorrectRomanNumeralValueOfXCTest() {
         assertEquals("XC", suit.covert(90));
     }
 
     @Test
-    public void tenNumbersSendNumberFiftyFiveExpectCorrectRomanNumeralLVTest() {
+    public void sendTenNumberValueOfFiftyFiveExpectCorrectRomanNumeralValueOfLVTest() {
         assertEquals("LV", suit.covert(55));
     }
 
     @Test
-    public void hundredNumersSendNumberHundredExpectCorrectRomanNumeralCTest() {
+    public void sendHundredNumerValueOfHundredExpectCorrectRomanNumeralValueOfCTest() {
         assertEquals("C", suit.covert(100));
     }
 
     @Test
-    public void hundredNumersSendNumberNineHundredExpectCorrectRomanNumeralCMTest() {
+    public void sendHundredNumerValueOfNineHundredExpectCorrectRomanNumeralValueOfCMTest() {
         assertEquals("CM", suit.covert(900));
     }
 
     @Test
-    public void hundredNumersSendNumberFiveHundredAndFiftyFiveExpectCorrectRomanNumeralDLVTest() {
+    public void sendHundredNumerValueOfFiveHundredAndFiftyFiveExpectCorrectRomanNumeralValueOfDLVTest() {
         assertEquals("DLV", suit.covert(555));
     }
 
     @Test
-    public void hundredNumersSendNumberFiveHundredAndFiveExpectCorrectRomanNumeralDVTest() {
+    public void sendHundredNumerValueOfFiveHundredAndFiveExpectCorrectRomanNumeralValueOfDVTest() {
         assertEquals("DV", suit.covert(505));
     }
 
     @Test
-    public void thousandNumbersSendNumberOneThousandExpectCorrectRomanNumeralMTest() {
+    public void sendThousandNumberValueOfOneThousandExpectCorrectRomanNumeralValueOfMTest() {
         assertEquals("M", suit.covert(1000));
     }
 
     @Test
-    public void thousandNumbersSendNumberThreeThousandExpectCorrectRomanNumeralMMMTest() {
+    public void sendThousandNumberValueOfThreeThousandExpectCorrectRomanNumeralValueOfMMMTest() {
         assertEquals("MMM", suit.covert(3000));
     }
 
     @Test
-    public void thousandNumbersSendNumberTwoThousandFiveHundredFiftyFiveExpectCorrectRomanNumeralMMDLVTest() {
+    public void sendThousandNumberValueOfTwoThousandFiveHundredFiftyFiveExpectCorrectRomanNumeralValueOfMMDLVTest() {
         assertEquals("MMDLV", suit.covert(2555));
     }
 
     @Test
-    public void thousandNumbersSendNumberTwoThousandFiveHundredExpectCorrectRomanNumeralMMDTest() {
+    public void sendThousandNumberValueOfTwoThousandFiveHundredExpectCorrectRomanNumeralValueOfMMDTest() {
         assertEquals("MMD", suit.covert(2500));
     }
 }
