@@ -42,4 +42,9 @@ public class NumbersToRomanNumeralsTest {
     public void tenNumbersSendNumberNinetyExpectCorrectRomanNumeralXCTest() {
         assertEquals("XC", suit.covert(90));
     }
+
+    @Test
+    public void tenNumbersSendNumberFiftyFiveExpectCorrectRomanNumeralLVTest() {
+        assertEquals("LV", suit.covert(55));
+    }
 }
