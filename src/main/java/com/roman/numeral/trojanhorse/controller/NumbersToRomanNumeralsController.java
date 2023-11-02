@@ -16,7 +16,7 @@ public class NumbersToRomanNumeralsController {
     NumbersToRomanNumeralsService service;
     
     @GetMapping("/{number}")
-    public String numbersToRomanNumerals(@PathVariable(value = "number", required = true) String number) {
+    public String numbersToRomanNumerals(@PathVariable(value = "number", required = true) int number) {
         return "";
     }
 }
