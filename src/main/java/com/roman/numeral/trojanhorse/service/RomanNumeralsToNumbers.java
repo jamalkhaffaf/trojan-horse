@@ -20,7 +20,11 @@ public class RomanNumeralsToNumbers {
         romanToNumberMap.put('I', 1);
         romanToNumberMap.put('V', 5);
         romanToNumberMap.put('X', 10);
-
+        romanToNumberMap.put('L', 50);
+        romanToNumberMap.put('C', 100);
+        romanToNumberMap.put('D', 500);
+        romanToNumberMap.put('M', 1000);
+        
         // ex. IX
         int result = 0;
         for (int i = 0; i < romanNumeral.length(); i++) {
