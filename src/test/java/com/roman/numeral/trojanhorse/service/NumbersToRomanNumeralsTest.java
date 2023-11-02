@@ -32,4 +32,14 @@ public class NumbersToRomanNumeralsTest {
     public void unitNumbersSendNumberNineExpectCorrectRomanNumeralIXTest() {
         assertEquals("IX", suit.covert(9));
     }
+
+    @Test
+    public void tenNumbersSendNumberTenExpectCorrectRomanNumeralXTest() {
+        assertEquals("X", suit.covert(10));
+    }
+
+    @Test
+    public void tenNumbersSendNumberNinetyExpectCorrectRomanNumeralXCTest() {
+        assertEquals("XC", suit.covert(90));
+    }
 }
