@@ -8,6 +8,7 @@ class TrojanHorseApplicationTests {
 
 	@Test
 	void contextLoads() {
+		TrojanHorseApplication.main(new String[] {});
 	}
 
 }
