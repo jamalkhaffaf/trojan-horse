@@ -67,4 +67,24 @@ public class NumbersToRomanNumeralsTest {
     public void hundredNumersSendNumberFiveHundredAndFiveExpectCorrectRomanNumeralDVTest() {
         assertEquals("DV", suit.covert(505));
     }
+
+    @Test
+    public void thousandNumbersSendNumberOneThousandExpectCorrectRomanNumeralMTest() {
+        assertEquals("M", suit.covert(1000));
+    }
+
+    @Test
+    public void thousandNumbersSendNumberThreeThousandExpectCorrectRomanNumeralMMMTest() {
+        assertEquals("MMM", suit.covert(3000));
+    }
+
+    @Test
+    public void thousandNumbersSendNumberTwoThousandFiveHundredFiftyFiveExpectCorrectRomanNumeralMMDLVTest() {
+        assertEquals("MMDLV", suit.covert(2555));
+    }
+
+    @Test
+    public void thousandNumbersSendNumberTwoThousandFiveHundredExpectCorrectRomanNumeralMMDTest() {
+        assertEquals("MMD", suit.covert(2500));
+    }
 }
