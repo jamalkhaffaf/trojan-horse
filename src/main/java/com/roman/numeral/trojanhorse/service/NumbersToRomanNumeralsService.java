@@ -1,6 +1,9 @@
 package com.roman.numeral.trojanhorse.service;
 
-public class NumbersToRomanNumerals {
+import org.springframework.stereotype.Service;
+
+@Service
+public class NumbersToRomanNumeralsService {
 
     public String covert(int number) {
 

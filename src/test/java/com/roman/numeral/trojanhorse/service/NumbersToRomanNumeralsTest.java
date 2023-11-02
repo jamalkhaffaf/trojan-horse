@@ -4,12 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class NumbersToRomanNumeralsTest {
 
-    NumbersToRomanNumerals suit = new NumbersToRomanNumerals();
+    @Autowired
+    NumbersToRomanNumeralsService suit;
 
     @Test
     public void sendNumerValueLessThanOneExpectIllegalArgumentExceptionTest() {

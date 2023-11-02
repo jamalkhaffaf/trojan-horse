@@ -3,7 +3,10 @@ package com.roman.numeral.trojanhorse.service;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RomanNumeralsToNumbers {
+import org.springframework.stereotype.Service;
+
+@Service
+public class RomanNumeralsToNumbersService {
 
     public int convert(String romanNumeral) {
 
