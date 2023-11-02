@@ -27,4 +27,9 @@ public class NumbersToRomanNumeralsTest {
     public void unitNumbersSendNumberOneExpectCorrectRomanNumeralITest() {
         assertEquals("I", suit.covert(1));
     }
+
+    @Test
+    public void unitNumbersSendNumberNineExpectCorrectRomanNumeralIXTest() {
+        assertEquals("IX", suit.covert(9));
+    }
 }
