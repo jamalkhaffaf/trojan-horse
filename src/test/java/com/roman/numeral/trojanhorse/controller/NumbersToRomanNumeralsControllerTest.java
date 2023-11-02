@@ -2,8 +2,10 @@ package com.roman.numeral.trojanhorse.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -50,7 +52,20 @@ public class NumbersToRomanNumeralsControllerTest {
 
     @Test
     public void shouldReturnExpectedRomanNumeralTest() throws Exception {
+        when(service.covert(1)).thenReturn("I");
+
         this.mockMvc.perform(get("/NumbersToRomanNumerals/1")).andDo(print())
-        .andExpect(view().name("I"));
+        .andExpect(status().is2xxSuccessful())
+        .andExpect(content().string("I"));
+    }
+
+    @Test
+    public void shouldReturnIllegalArgumentExceptionTest() throws Exception {
+        when(service.covert(4000))
+        .thenThrow(new IllegalArgumentException("Only Numbers Greater Than 0 And Less Than 3001 Are Accepted!"));
+
+        this.mockMvc.perform(get("/NumbersToRomanNumerals/1")).andDo(print())
+        .andExpect(status().is4xxClientError())
+        .andExpect(content().string("Only Numbers Greater Than 0 And Less Than 3001 Are Accepted!"));
     }
 }
