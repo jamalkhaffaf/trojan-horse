@@ -8,7 +8,11 @@ public class NumbersToRomanNumerals {
             throw new IllegalArgumentException("Only Numbers Greater Than 0 And Less Than 3001 Are Accepted!");
         }
 
-        return "";
+        String[] romanUnits = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+
+        String result = romanUnits[number];
+
+        return result;
     }
     
 }
