@@ -14,12 +14,12 @@ public class NumbersToRomanNumeralsTest {
     @Test
     public void lessThanOneTest() {
         IllegalArgumentException ex = assertThrowsExactly(IllegalArgumentException.class, () -> suit.covert(0));
-        assertEquals("Only Numbers Greater Than 0 And Less Than 3000 Are Accepted!", ex.getMessage());
+        assertEquals("Only Numbers Greater Than 0 And Less Than 3001 Are Accepted!", ex.getMessage());
     }
 
     @Test
     public void moreThanThreeThousandTest() {
         IllegalArgumentException ex = assertThrowsExactly(IllegalArgumentException.class, () -> suit.covert(3001));
-        assertEquals("Only Numbers Greater Than 0 And Less Than 3000 Are Accepted!", ex.getMessage());
+        assertEquals("Only Numbers Greater Than 0 And Less Than 3001 Are Accepted!", ex.getMessage());
     }
 }
