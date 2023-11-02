@@ -22,4 +22,9 @@ public class NumbersToRomanNumeralsTest {
         IllegalArgumentException ex = assertThrowsExactly(IllegalArgumentException.class, () -> suit.covert(3001));
         assertEquals("Only Numbers Greater Than 0 And Less Than 3001 Are Accepted!", ex.getMessage());
     }
+
+    @Test
+    public void unitNumbersSendNumberOneExpectCorrectRomanNumeralITest() {
+        assertEquals("I", suit.covert(1));
+    }
 }
