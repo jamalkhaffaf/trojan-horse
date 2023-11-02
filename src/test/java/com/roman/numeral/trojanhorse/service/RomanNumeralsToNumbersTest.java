@@ -22,4 +22,16 @@ public class RomanNumeralsToNumbersTest {
         IllegalArgumentException ex = assertThrowsExactly(IllegalArgumentException.class, () -> suit.convert(""));
         assertEquals("Invalid argument been used, Null or Empty are not valid!", ex.getMessage());
     }
+
+    @Test
+    public void sendRomanNumeralsContainsOutOfRangeValuesExpectIllegalArgumentException() {
+        IllegalArgumentException ex = assertThrowsExactly(IllegalArgumentException.class, () -> suit.convert("MDZZ"));
+        assertEquals("Invalid argument been detected, please use values within expected range [M, D, C, L, X, V, I].", ex.getMessage());
+    }
+
+    @Test
+    public void sendRomanNumeralsInLowerCaseContainsOutOfRangeValuesExpectIllegalArgumentException() {
+        IllegalArgumentException ex = assertThrowsExactly(IllegalArgumentException.class, () -> suit.convert("zzvi"));
+        assertEquals("Invalid argument been detected, please use values within expected range [M, D, C, L, X, V, I].", ex.getMessage());
+    }
 }
