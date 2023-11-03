@@ -17,12 +17,27 @@ For building and running the application you need:
 
 ## Running the application locally
 
+### IDE instructions:
+
 There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.roman.numeral.trojanhorse.TrojanHorseApplication` class from your IDE.
+
+### CMD instructions:
 
 Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html) like so:
 
 ```shell
 mvn clean install; mvn spring-boot:run
+```
+### Docker instructions:
+
+- Build Docker image
+```shell
+docker build -t trojanhorse .
+```
+
+- Run Docker image with port binding
+```shell
+docker run -p 8080:8080 -i -t trojanhorse
 ```
 
 ## Test Coverage
@@ -30,6 +45,6 @@ Test coverage is at 100%, using `Jacoco` plugin.
 
 ## RoadMap
 
-* Implement `Basic Auth` 
+* ~~Add `Dockerfile` for application to run on any platform~~
 * Implement `RomanNumeralsToNumbersController` API
-* Add `Dockerfile` for application to run on any platform including Android phones
+* Implement `Basic Auth` 
