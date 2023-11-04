@@ -14,6 +14,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 import com.roman.numeral.trojanhorse.service.NumbersToRomanNumeralsService;
 
@@ -38,11 +39,14 @@ public class NumbersToRomanNumeralsControllerTest {
 
     @Test
     public void shouldReturn4xxWhenSendBadInputTest() throws Exception {
-        String error = this.mockMvc.perform(get("/NumbersToRomanNumerals/A")).andDo(print())
-        .andExpect(status().is4xxClientError()).andReturn().getResolvedException().getMessage();
+        MvcResult result = this.mockMvc.perform(get("/NumbersToRomanNumerals/A")).andDo(print())
+        .andExpect(status().is4xxClientError()).andReturn();
+
+        Exception ex = result.getResolvedException();
+        String message = ex != null ? ex.getMessage() : "";
         
         assertEquals("Failed to convert value of type 'java.lang.String'" + 
-        " to required type 'int'; For input string: \"A\"", error);
+        " to required type 'int'; For input string: \"A\"", message);
     }
 
     @Test
