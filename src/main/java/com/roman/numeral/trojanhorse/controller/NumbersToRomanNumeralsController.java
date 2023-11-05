@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.roman.numeral.trojanhorse.service.NumbersToRomanNumeralsService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping("/NumbersToRomanNumerals")
 public class NumbersToRomanNumeralsController {
@@ -23,7 +26,9 @@ public class NumbersToRomanNumeralsController {
         
         try {
             result = service.covert(number);
+            log.info("action: numbersToRomanNumerals(), message=converting \"{}\" to roman \"{}\"", number, result);
         } catch(IllegalArgumentException ex) {
+            log.error("action: numbersToRomanNumerals(), message=exception occured during converting \"{}\". {}", number, ex.getMessage());
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
         }
         
