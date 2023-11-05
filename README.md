@@ -76,5 +76,7 @@ Currently the API only supports converting `Numbers` to `Roman Numerals`. Use fo
 # RoadMap
 
 * ~~Add `Dockerfile` for application to run on any platform~~
+* ~~Add `Github Actions` CI/CD~~
+* Publish latest artifacts from `Github Actions` to `Docker Repository`
 * Implement `RomanNumeralsToNumbersController` API
 * Implement `Basic Auth` 
