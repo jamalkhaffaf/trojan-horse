@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Build and Unit Test
+name: Build CI
 
 on:
   push:
@@ -15,7 +15,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  Build CI:
+  build-ci:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
