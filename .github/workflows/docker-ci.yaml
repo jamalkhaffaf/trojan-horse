@@ -19,18 +19,18 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Download artifact
-          id: download-artifact
-          uses: dawidd6/action-download-artifact@v2
-          with:
-            workflow: build-ci.yaml
-            workflow_conclusion: success
-            commit: ${{github.event.pull_request.head.sha}}
-            branch: main
-            event: push
-            name: trojan-horse-artifact
-            path: target/
-            skip_unpack: true
-            if_no_artifact_found: fail
+        id: download-artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: build-ci.yaml
+          workflow_conclusion: success
+          commit: ${{github.event.pull_request.head.sha}}
+          branch: main
+          event: push
+          name: trojan-horse-artifact
+          path: target/
+          skip_unpack: true
+          if_no_artifact_found: fail
 
       - name: Echo download path
         run: echo ${{steps.download-artifact.outputs.download-path}}
