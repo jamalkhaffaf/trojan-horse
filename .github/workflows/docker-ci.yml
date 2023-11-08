@@ -18,12 +18,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: 'Download artifact'
+      - name: Download artifact
           id: download-artifact
           uses: dawidd6/action-download-artifact@v2
           with:
             workflow: build-ci.yml
             workflow_conclusion: success
+            commit: ${{github.event.pull_request.head.sha}}
             branch: main
             event: push
             name: trojan-horse-artifact
@@ -31,7 +32,7 @@ jobs:
             skip_unpack: true
             if_no_artifact_found: fail
 
-      - name: 'Echo download path'
+      - name: Echo download path
         run: echo ${{steps.download-artifact.outputs.download-path}}
 
       - name: Docker meta
