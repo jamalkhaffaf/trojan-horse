@@ -1,11 +1,16 @@
 name: Docker CI
 
 on:
-  workflow_dispatch:
   workflow_run:
     workflows: [ "Build CI" ]
     types:
       - completed
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: string
+        default: main
+        required: true
 
 jobs:
   docker-ci:
