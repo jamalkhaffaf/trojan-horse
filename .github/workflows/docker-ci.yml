@@ -3,9 +3,8 @@ name: Docker CI
 on:
   workflow_run:
     workflows: [Build CI]
-    # branches: [main]
     types:
-      - completed      
+      - completed
 
 jobs:
   docker-ci:
