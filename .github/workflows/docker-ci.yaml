@@ -22,7 +22,7 @@ jobs:
           id: download-artifact
           uses: dawidd6/action-download-artifact@v2
           with:
-            workflow: build-ci.yml
+            workflow: build-ci.yaml
             workflow_conclusion: success
             commit: ${{github.event.pull_request.head.sha}}
             branch: main
