@@ -18,19 +18,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/download-artifact@v3
-        id: download
+      - name: Download artifact
+        id: download-artifact
+        uses: dawidd6/action-download-artifact@v2
         with:
-          name: 'trojan-horse-artifact'
+          workflow: build-ci.yaml
+          workflow_conclusion: success
+          commit: ${{github.event.pull_request.head.sha}}
+          branch: main
+          event: push
+          name: trojan-horse-artifact
+          path: target/
+          skip_unpack: true
+          if_no_artifact_found: fail
 
-      - name: 'Echo download path'
-        run: echo ${{steps.download.outputs.download-path}}
-
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ vars.DOCKER_HUB_NAMESPACE }}/${{ vars.DOCKER_HUB_REPOSITORY }}
+      - name: Echo download path
+        run: echo ${{steps.download-artifact.outputs.download-path}}
 
       - name: Login to DockerHub
         if: github.event_name != 'pull_request'
