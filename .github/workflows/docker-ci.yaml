@@ -29,7 +29,7 @@ jobs:
           event: push
           name: trojan-horse-artifact
           path: target/
-          skip_unpack: true
+          skip_unpack: false
           if_no_artifact_found: fail
 
       - name: Echo download path
