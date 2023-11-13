@@ -66,7 +66,7 @@ Please be sure you have [Docker](https://www.docker.com/products/docker-desktop/
 
 Currently the API only supports converting `Numbers` to `Roman Numerals`. Use following format:
 
-* http://localhost:9000/numberstoromannumerals/{number}
+* http://localhost:9000/api/numbers/to/roman/numerals/{number}
 
 # Test 
 

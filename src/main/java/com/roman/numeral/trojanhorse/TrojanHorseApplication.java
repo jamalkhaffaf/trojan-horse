@@ -4,7 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TrojanHorseApplication {
+public final class TrojanHorseApplication {
+
+    private TrojanHorseApplication() {
+    }
 
     public static void main(String... args) {
         SpringApplication.run(TrojanHorseApplication.class, args);
