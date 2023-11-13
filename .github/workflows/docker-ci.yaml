@@ -29,7 +29,7 @@ jobs:
           event: push
           name: trojan-horse-artifact
           path: target/
-          skip_unpack: true
+          skip_unpack: false
           if_no_artifact_found: fail
 
       - name: Echo download path
@@ -40,12 +40,11 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ vars.DOCKERHUB_NAMESPACE }}/${{ vars.DOCKERHUB_REPOSITORY }}:trojan-horse-latest
