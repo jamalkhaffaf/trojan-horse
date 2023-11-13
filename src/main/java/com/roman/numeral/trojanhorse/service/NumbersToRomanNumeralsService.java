@@ -5,9 +5,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class NumbersToRomanNumeralsService {
 
+    private static final int MINIMUM = 1;
+    private static final int MAXIMUM = 3000;
+    private static final int THOUSAND_REMAINDER = 10000;
+    private static final int HUNDRED_REMAINDER = 1000;
+    private static final int TEN_REMAINDER = 100;
+
     public String covert(int number) {
 
-        if (number < 1 || number > 3000) {
+        if (number < MINIMUM || number > MAXIMUM) {
             throw new IllegalArgumentException("Only Numbers Greater Than 0 And Less Than 3001 Are Accepted!");
         }
 
@@ -16,12 +22,10 @@ public class NumbersToRomanNumeralsService {
         String[] romanHundreds = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
         String[] romanThousands = {"", "M", "MM", "MMM"};
 
-        String result = romanThousands[(number % 10000) / 1000] + 
-            romanHundreds[(number % 1000) / 100] + 
-            romanTens[(number % 100) / 10] + 
-            romanUnits[number % 10];
-
-        return result;
+        return romanThousands[number % THOUSAND_REMAINDER / 1000] +
+                romanHundreds[number % HUNDRED_REMAINDER / 100] +
+                romanTens[number % TEN_REMAINDER / 10] +
+                romanUnits[number % 10];
     }
-    
+
 }

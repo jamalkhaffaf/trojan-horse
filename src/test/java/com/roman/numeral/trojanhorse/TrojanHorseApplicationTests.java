@@ -3,12 +3,13 @@ package com.roman.numeral.trojanhorse;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+@SuppressWarnings("TestMethodWithoutAssertion")
 @SpringBootTest
-class TrojanHorseApplicationTests {
+public class TrojanHorseApplicationTests {
 
 	@Test
 	void contextLoads() {
-		TrojanHorseApplication.main(new String[] {});
+		TrojanHorseApplication.main();
 	}
 
 }

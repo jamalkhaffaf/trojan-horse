@@ -1,7 +1,6 @@
 package com.roman.numeral.trojanhorse.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,24 +13,23 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/NumbersToRomanNumerals")
+@RequestMapping("/api/numbers/to/roman/numerals")
 public class NumbersToRomanNumeralsController {
 
     @Autowired
-    NumbersToRomanNumeralsService service;
-    
+    private NumbersToRomanNumeralsService service;
+
     @GetMapping("/{number}")
-    public ResponseEntity<String> numbersToRomanNumerals(@PathVariable(value = "number", required = true) int number) {
-        String result = "";
-        
+    public ResponseEntity<String> convertToRomanNumerals(@PathVariable("number") int number) {
+        ResponseEntity<String> response;
         try {
-            result = service.covert(number);
-            log.info("action: numbersToRomanNumerals(), message=converting \"{}\" to roman \"{}\"", number, result);
-        } catch(IllegalArgumentException ex) {
-            log.error("action: numbersToRomanNumerals(), message=exception occured during converting \"{}\". {}", number, ex.getMessage());
-            return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+            String result = service.covert(number);
+            log.info("Converted number {} to Roman numeral: {}", number, result);
+            response = ResponseEntity.ok(result);
+        } catch (IllegalArgumentException ex) {
+            log.error("Failed to convert number {}. Reason: {}", number, ex.getMessage());
+            response = ResponseEntity.badRequest().body(ex.getMessage());
         }
-        
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        return response;
     }
 }

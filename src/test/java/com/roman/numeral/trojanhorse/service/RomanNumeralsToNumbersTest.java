@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class RomanNumeralsToNumbersTest {
 
     @Autowired
-    RomanNumeralsToNumbersService suit;
+    private RomanNumeralsToNumbersService suit;
 
     @Test
     public void sendNullObjectExpectIllegalArgumentExceptionTest() {
@@ -26,79 +26,79 @@ public class RomanNumeralsToNumbersTest {
     }
 
     @Test
-    public void sendRomanNumeralsContainsOutOfRangeValuesExpectIllegalArgumentExceptionTest() {
+    public void sendOutOfRangeValuesExpectIllegalArgumentExceptionTest() {
         IllegalArgumentException ex = assertThrowsExactly(IllegalArgumentException.class, () -> suit.convert("MDZZ"));
         assertEquals("Invalid argument been detected, please use values within expected range [M, D, C, L, X, V, I].", ex.getMessage());
     }
 
     @Test
-    public void sendRomanNumeralsInLowerCaseContainsOutOfRangeValuesExpectIllegalArgumentExceptionTest() {
+    public void sendOutOfRangeSmallLetterValuesExpectIllegalArgumentExceptionTest() {
         IllegalArgumentException ex = assertThrowsExactly(IllegalArgumentException.class, () -> suit.convert("zzvi"));
         assertEquals("Invalid argument been detected, please use values within expected range [M, D, C, L, X, V, I].", ex.getMessage());
     }
 
     @Test
-    public void sendValidRomanNumeralUnitsValueOfIExpectConvertedToOneTest() {
+    public void sendValidValueIExpectConvertedToOneTest() {
         assertEquals(1, suit.convert("I"));
     }
 
     @Test
-    public void sendValidRomanNumeralUnitsValueOfIXExpectConvertedToNineTest() {
+    public void sendValidValueIXExpectConvertedToNineTest() {
         assertEquals(9, suit.convert("IX"));
     }
 
     @Test
-    public void sendValidRomanNumeralTensValueOfXExpectConvertedToTenTest() {
+    public void sendValidValueXExpectConvertedToTenTest() {
         assertEquals(10, suit.convert("X"));
     }
 
     @Test
-    public void sendValidRomanNumeralTensValueOfXCExpectConvertedToNinetyTest() {
+    public void sendValidValueXCExpectConvertedToNinetyTest() {
         assertEquals(90, suit.convert("XC"));
     }
 
     @Test
-    public void sendValidRomanNumeralTensValueOfLVExpectConvertedToFiftyFiveTest() {
+    public void sendValidValueLVExpectConvertedToFiftyFiveTest() {
         assertEquals(55, suit.convert("LV"));
     }
 
     @Test
-    public void sendValidRomanNumeralHundredsValueOfCExpectConvertedToHundredTest() {
+    public void sendValidValueCExpectConvertedToHundredTest() {
         assertEquals(100, suit.convert("C"));
     }
 
     @Test
-    public void sendValidRomanNumeralHundredsValueOfCMExpectConvertedToNineHundredTest() {
+    public void sendValidValueCMExpectConvertedToNineHundredTest() {
         assertEquals(900, suit.convert("CM"));
     }
 
     @Test
-    public void sendValidRomanNumeralHundredsValueOfDLVExpectConvertedToFiveHundredAndFiftyFiveTest() {
+    public void sendValidValueDLVExpectConvertedToFiveHundredAndFiftyFiveTest() {
         assertEquals(555, suit.convert("DLV"));
     }
 
     @Test
-    public void sendValidRomanNumeralHundredsValueOfDVExpectConvertedToFiveHundredAndFiveTest() {
+    public void sendValidValueDVExpectConvertedToFiveHundredAndFiveTest() {
         assertEquals(505, suit.convert("DV"));
     }
 
     @Test
-    public void sendValidRomanNumeralThousandsValueOfMExpectConvertedToThousandTest() {
+    public void sendValidValueMExpectConvertedToThousandTest() {
         assertEquals(1000, suit.convert("M"));
     }
 
     @Test
-    public void sendValidRomanNumeralThousandsValueOfMMMExpectConvertedToThreeThousandTest() {
+    public void sendValidValueMMMExpectConvertedToThreeThousandTest() {
         assertEquals(3000, suit.convert("MMM"));
     }
 
     @Test
-    public void sendValidRomanNumeralThousandsValueOfMMDLVExpectConvertedToTwoThousandFiveHundredFiftyFiveTest() {
+    public void sendValidValueMMDLVExpectConvertedToTwoThousandFiveHundredFiftyFiveTest() {
         assertEquals(2555, suit.convert("MMDLV"));
     }
 
     @Test
-    public void sendValidRomanNumeralThousandsValueOfMMDExpectConvertedToTwoThousandFiveHundredTest() {
+    public void sendValidValueMMDExpectConvertedToTwoThousandFiveHundredTest() {
         assertEquals(2500, suit.convert("MMD"));
     }
 }

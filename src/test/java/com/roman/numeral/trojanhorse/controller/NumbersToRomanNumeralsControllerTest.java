@@ -18,63 +18,64 @@ import org.springframework.test.web.servlet.MvcResult;
 
 import com.roman.numeral.trojanhorse.service.NumbersToRomanNumeralsService;
 
+@SuppressWarnings("TestMethodWithoutAssertion")
 @SpringBootTest
 @AutoConfigureMockMvc
 public class NumbersToRomanNumeralsControllerTest {
 
     @InjectMocks
-    NumbersToRomanNumeralsController suit;
+    private NumbersToRomanNumeralsController suit;
 
     @MockBean
-    NumbersToRomanNumeralsService service;
+    private NumbersToRomanNumeralsService service;
 
     @Autowired
-	private MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     @Test
     public void shouldReturn404WhenSendEmptyInputTest() throws Exception {
-        this.mockMvc.perform(get("/NumbersToRomanNumerals/")).andDo(print())
-        .andExpect(status().is(404));
+        mockMvc.perform(get("/api/numbers/to/roman/numerals/")).andDo(print())
+                .andExpect(status().is(404));
     }
 
     @Test
     public void shouldReturn4xxWhenSendBadInputTest() throws Exception {
-        MvcResult result = this.mockMvc.perform(get("/NumbersToRomanNumerals/A")).andDo(print())
-        .andExpect(status().is4xxClientError()).andReturn();
+        MvcResult result = mockMvc.perform(get("/api/numbers/to/roman/numerals/A")).andDo(print())
+                .andExpect(status().is4xxClientError()).andReturn();
 
         Exception ex = result.getResolvedException();
         String message = ex != null ? ex.getMessage() : "";
-        
-        assertEquals("Failed to convert value of type 'java.lang.String'" + 
-        " to required type 'int'; For input string: \"A\"", message);
+
+        assertEquals("Failed to convert value of type 'java.lang.String'" +
+                " to required type 'int'; For input string: \"A\"", message);
     }
 
     @Test
     public void shouldReturnExpectedRomanNumeralTest() throws Exception {
         when(service.covert(1)).thenReturn("I");
 
-        this.mockMvc.perform(get("/NumbersToRomanNumerals/1")).andDo(print())
-        .andExpect(status().is2xxSuccessful())
-        .andExpect(content().string("I"));
+        mockMvc.perform(get("/api/numbers/to/roman/numerals/1")).andDo(print())
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(content().string("I"));
     }
 
     @Test
     public void shouldReturnIllegalArgumentExceptionForOverThreeThousandLimitTest() throws Exception {
         when(service.covert(4000))
-        .thenThrow(new IllegalArgumentException("Only Numbers Greater Than 0 And Less Than 3001 Are Accepted!"));
+                .thenThrow(new IllegalArgumentException("Only Numbers Greater Than 0 And Less Than 3001 Are Accepted!"));
 
-        this.mockMvc.perform(get("/NumbersToRomanNumerals/4000")).andDo(print())
-        .andExpect(status().is4xxClientError())
-        .andExpect(content().string("Only Numbers Greater Than 0 And Less Than 3001 Are Accepted!"));
+        mockMvc.perform(get("/api/numbers/to/roman/numerals/4000")).andDo(print())
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().string("Only Numbers Greater Than 0 And Less Than 3001 Are Accepted!"));
     }
 
     @Test
     public void shouldReturnIllegalArgumentExceptionForLessThanOneLimitTest() throws Exception {
         when(service.covert(0))
-        .thenThrow(new IllegalArgumentException("Only Numbers Greater Than 0 And Less Than 3001 Are Accepted!"));
+                .thenThrow(new IllegalArgumentException("Only Numbers Greater Than 0 And Less Than 3001 Are Accepted!"));
 
-        this.mockMvc.perform(get("/NumbersToRomanNumerals/0")).andDo(print())
-        .andExpect(status().is4xxClientError())
-        .andExpect(content().string("Only Numbers Greater Than 0 And Less Than 3001 Are Accepted!"));
+        mockMvc.perform(get("/api/numbers/to/roman/numerals/0")).andDo(print())
+                .andExpect(status().is4xxClientError())
+                .andExpect(content().string("Only Numbers Greater Than 0 And Less Than 3001 Are Accepted!"));
     }
 }
