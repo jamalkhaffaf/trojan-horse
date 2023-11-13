@@ -47,4 +47,4 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: $DOCKERHUB_NAMESPACE/$DOCKERHUB_REPOSITORY:trojan-horse-latest
+          tags: ${{ env.DOCKERHUB_NAMESPACE }}/${{ env.DOCKERHUB_REPOSITORY }}:trojan-horse-latest
