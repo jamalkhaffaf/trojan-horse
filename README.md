@@ -37,7 +37,7 @@ For building and running the application you need:
 
 ## IDE instructions:
 
-There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.roman.numeral.trojanhorse.TrojanHorseApplication` class from your IDE.
+There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.roman.numeral.trojanhorse.Application` class from your IDE.
 
 ## CMD instructions:
 

@@ -5,11 +5,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SuppressWarnings("TestMethodWithoutAssertion")
 @SpringBootTest
-public class TrojanHorseApplicationTest {
+public class ApplicationTest {
 
 	@Test
 	void contextLoads() {
-		TrojanHorseApplication.main();
+		Application.main();
 	}
 
 }
