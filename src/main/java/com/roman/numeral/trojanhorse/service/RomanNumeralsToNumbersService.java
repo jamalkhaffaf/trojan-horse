@@ -38,8 +38,8 @@ public class RomanNumeralsToNumbersService {
         for (int i = 0; i < upperCase.length(); i++) {
             if (i > 0 && romanToNumberMap.get(upperCase.charAt(i))
                     > romanToNumberMap.get(upperCase.charAt(i - 1))) {
-                result += romanToNumberMap.get(upperCase.charAt(i)) - 2 *
-                        romanToNumberMap.get(upperCase.charAt(i - 1));
+                result += romanToNumberMap.get(upperCase.charAt(i)) - 2
+                        * romanToNumberMap.get(upperCase.charAt(i - 1));
             } else {
                 result += romanToNumberMap.get(upperCase.charAt(i));
             }

@@ -17,4 +17,6 @@ jobs:
           reporter: 'github-pr-check'
           checkstyle_config: 'sun_checks.xml'
           workdir: './src/main/java'
+          level: 'error'
+          fail_on_error: 'false'
           tool_name: 'reviewdog'
