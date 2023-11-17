@@ -5,15 +5,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class NumbersToRomanNumeralsService {
 
-    private static final int MINIMUM = 1;
-    private static final int MAXIMUM = 3000;
+    private static final int MINIMUM_ACCEPTED_ROMAN_NUMERAL = 1;
+    private static final int MAXIMUM_ACCEPTED_ROMAN_NUMERAL = 3000;
     private static final int THOUSAND_REMAINDER = 10000;
     private static final int HUNDRED_REMAINDER = 1000;
     private static final int TEN_REMAINDER = 100;
 
     public String covert(int number) {
 
-        if (number < MINIMUM || number > MAXIMUM) {
+        if (number < MINIMUM_ACCEPTED_ROMAN_NUMERAL || number > MAXIMUM_ACCEPTED_ROMAN_NUMERAL) {
             throw new IllegalArgumentException("Only Numbers Greater Than 0 And Less Than 3001 Are Accepted!");
         }
 
