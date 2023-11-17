@@ -21,7 +21,7 @@ public class NumbersToRomanNumeralsController {
 
     @GetMapping("/{number}")
     public ResponseEntity<String> convertToRomanNumerals(
-            @PathVariable("number") int number) {
+            @PathVariable("number") final int number) {
         ResponseEntity<String> response;
         try {
             String result = service.covert(number);
