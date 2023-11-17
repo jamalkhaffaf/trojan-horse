@@ -20,14 +20,17 @@ public class NumbersToRomanNumeralsController {
     private NumbersToRomanNumeralsService service;
 
     @GetMapping("/{number}")
-    public ResponseEntity<String> convertToRomanNumerals(@PathVariable("number") int number) {
+    public ResponseEntity<String> convertToRomanNumerals(
+            @PathVariable("number") int number) {
         ResponseEntity<String> response;
         try {
             String result = service.covert(number);
-            log.info("Converted number {} to Roman numeral: {}", number, result);
+            log.info("Converted number {} to Roman numeral: {}",
+                    number, result);
             response = ResponseEntity.ok(result);
         } catch (IllegalArgumentException ex) {
-            log.error("Failed to convert number {}. Reason: {}", number, ex.getMessage());
+            log.error("Failed to convert number {}. Reason: {}",
+                    number, ex.getMessage());
             response = ResponseEntity.badRequest().body(ex.getMessage());
         }
         return response;

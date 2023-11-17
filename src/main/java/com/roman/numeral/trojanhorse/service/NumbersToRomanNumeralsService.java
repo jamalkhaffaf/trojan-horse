@@ -13,14 +13,20 @@ public class NumbersToRomanNumeralsService {
 
     public String covert(int number) {
 
-        if (number < MINIMUM_ACCEPTED_ROMAN_NUMERAL || number > MAXIMUM_ACCEPTED_ROMAN_NUMERAL) {
-            throw new IllegalArgumentException("Only Numbers Greater Than 0 And Less Than 3001 Are Accepted!");
+        if (number < MINIMUM_ACCEPTED_ROMAN_NUMERAL
+                || number > MAXIMUM_ACCEPTED_ROMAN_NUMERAL) {
+            throw new IllegalArgumentException("Only Numbers Greater Than"
+                    + " 0 And Less Than 3001 Are Accepted!");
         }
 
-        String[] romanUnits = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
-        String[] romanTens = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
-        String[] romanHundreds = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
-        String[] romanThousands = {"", "M", "MM", "MMM"};
+        String[] romanUnits =
+                {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+        String[] romanTens =
+                {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+        String[] romanHundreds =
+                {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
+        String[] romanThousands =
+                {"", "M", "MM", "MMM"};
 
         return romanThousands[number % THOUSAND_REMAINDER / 1000]
                 + romanHundreds[number % HUNDRED_REMAINDER / 100]
