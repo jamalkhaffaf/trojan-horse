@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfiguration implements WebMvcConfigurer {
 
     @Override
-    public void configurePathMatch(PathMatchConfigurer config) {
+    public void configurePathMatch(final PathMatchConfigurer config) {
         AntPathMatcher matcher = new AntPathMatcher();
         matcher.setCaseSensitive(false);
         config.setPathMatcher(matcher);

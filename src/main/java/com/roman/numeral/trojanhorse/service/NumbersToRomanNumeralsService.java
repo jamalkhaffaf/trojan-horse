@@ -29,6 +29,18 @@ public class NumbersToRomanNumeralsService {
      * Used to extract the unit position.
      */
     private static final int UNIT_REMAINDER = 10;
+    /**
+     * Used to remove rest of the numbers.
+     */
+    private static final int THOUSAND_DEVIDER = 1000;
+    /**
+     * Used to remove rest of the numbers.
+     */
+    private static final int HUNDRED_DEVIDER = 100;
+    /**
+     * Used to remove rest of the numbers.
+     */
+    private static final int TEN_DEVIDER = 10;
 
     public String covert(int number) {
 
@@ -47,9 +59,9 @@ public class NumbersToRomanNumeralsService {
         String[] romanThousands =
                 {"", "M", "MM", "MMM"};
 
-        return romanThousands[number % THOUSAND_REMAINDER / 1000]
-                + romanHundreds[number % HUNDRED_REMAINDER / 100]
-                + romanTens[number % TEN_REMAINDER / 10]
+        return romanThousands[number % THOUSAND_REMAINDER / THOUSAND_DEVIDER]
+                + romanHundreds[number % HUNDRED_REMAINDER / HUNDRED_DEVIDER]
+                + romanTens[number % TEN_REMAINDER / TEN_DEVIDER]
                 + romanUnits[number % UNIT_REMAINDER];
     }
 
