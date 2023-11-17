@@ -25,6 +25,10 @@ public class NumbersToRomanNumeralsService {
      * Used to extract the ten position.
      */
     private static final int TEN_REMAINDER = 100;
+    /**
+     * Used to extract the unit position.
+     */
+    private static final int UNIT_REMAINDER = 10;
 
     public String covert(int number) {
 
@@ -46,7 +50,7 @@ public class NumbersToRomanNumeralsService {
         return romanThousands[number % THOUSAND_REMAINDER / 1000]
                 + romanHundreds[number % HUNDRED_REMAINDER / 100]
                 + romanTens[number % TEN_REMAINDER / 10]
-                + romanUnits[number % 10];
+                + romanUnits[number % UNIT_REMAINDER];
     }
 
 }
