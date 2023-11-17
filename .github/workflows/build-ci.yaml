@@ -9,6 +9,10 @@
 name: Build CI
 
 on:
+  workflow_run:
+    workflows: [ "Checkstyle CI" ]
+    types:
+      - completed
   push:
     branches: [ "main" ]
   pull_request:

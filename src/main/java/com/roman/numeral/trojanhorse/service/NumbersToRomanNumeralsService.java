@@ -22,10 +22,10 @@ public class NumbersToRomanNumeralsService {
         String[] romanHundreds = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
         String[] romanThousands = {"", "M", "MM", "MMM"};
 
-        return romanThousands[number % THOUSAND_REMAINDER / 1000] +
-                romanHundreds[number % HUNDRED_REMAINDER / 100] +
-                romanTens[number % TEN_REMAINDER / 10] +
-                romanUnits[number % 10];
+        return romanThousands[number % THOUSAND_REMAINDER / 1000]
+                + romanHundreds[number % HUNDRED_REMAINDER / 100]
+                + romanTens[number % TEN_REMAINDER / 10]
+                + romanUnits[number % 10];
     }
 
 }
