@@ -3,7 +3,7 @@ package com.roman.numeral.trojanhorse;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SuppressWarnings({"PMD", "checkstyle:hideutilityclassconstructor"})
+@SuppressWarnings({"PMD", "checkstyle:HideUtilityClassConstructorCheck"})
 @SpringBootApplication
 public class Application {
 
