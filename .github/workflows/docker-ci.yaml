@@ -2,18 +2,15 @@ name: Docker CI
 
 on:
   workflow_run:
-    workflows: [ "Build CI", "Checkstyle CI" ]
+    workflows: [Build CI]
     types:
       - completed
+    branches: [main]
   workflow_dispatch:
-    inputs:
-      environment:
-        type: string
-        default: main
-        required: true
 
 jobs:
   docker-ci:
+    if: ${{ github.event.workflow_run.conclusion == 'success'}}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
