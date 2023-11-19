@@ -5,17 +5,20 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RomanNumeralsToNumbersService {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class RomanNumeralsToNumbersService {
 
     /**
      * Validate correct Roman Numeral symbols.
      */
     private static final Pattern PATTERN = Pattern.compile("[MDCLXVI]+");
 
-    public int convert(String romanNumeral) {
+    public static int convert(String romanNumeral) {
 
         if (romanNumeral == null || romanNumeral.isEmpty()) {
             throw new IllegalArgumentException(
@@ -33,7 +36,7 @@ public class RomanNumeralsToNumbersService {
         return transformRomanNumeralsToNumbers(upperCase);
     }
 
-    private static int transformRomanNumeralsToNumbers(String upperCase) {
+    private static int transformRomanNumeralsToNumbers(final String upperCase) {
         Map<Character, Integer> romanToNumberMap = new HashMap<>();
         romanToNumberMap.put('I', 1);
         romanToNumberMap.put('V', 5);

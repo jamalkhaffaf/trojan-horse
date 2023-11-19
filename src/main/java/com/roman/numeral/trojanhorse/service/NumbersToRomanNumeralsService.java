@@ -1,9 +1,12 @@
 package com.roman.numeral.trojanhorse.service;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-public class NumbersToRomanNumeralsService {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class NumbersToRomanNumeralsService {
 
     /**
      * Minimum accepted Roman Numeral number to be converted.
@@ -42,7 +45,7 @@ public class NumbersToRomanNumeralsService {
      */
     private static final int TEN_DEVIDER = 10;
 
-    public String covert(final int number) {
+    public static String covert(final int number) {
 
         if (number < MINIMUM_ACCEPTED_ROMAN_NUMERAL
                 || number > MAXIMUM_ACCEPTED_ROMAN_NUMERAL) {
