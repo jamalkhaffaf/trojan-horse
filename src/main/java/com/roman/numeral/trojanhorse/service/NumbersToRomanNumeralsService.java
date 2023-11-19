@@ -42,7 +42,7 @@ public class NumbersToRomanNumeralsService {
      */
     private static final int TEN_DEVIDER = 10;
 
-    public String covert(int number) {
+    public String covert(final int number) {
 
         if (number < MINIMUM_ACCEPTED_ROMAN_NUMERAL
                 || number > MAXIMUM_ACCEPTED_ROMAN_NUMERAL) {

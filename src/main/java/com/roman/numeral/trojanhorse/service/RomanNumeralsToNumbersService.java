@@ -10,6 +10,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class RomanNumeralsToNumbersService {
 
+    /**
+     * Validate correct Roman Numeral symbols.
+     */
+    private static final Pattern PATTERN = Pattern.compile("[MDCLXVI]+");
+
     public int convert(String romanNumeral) {
 
         if (romanNumeral == null || romanNumeral.isEmpty()) {
@@ -18,13 +23,17 @@ public class RomanNumeralsToNumbersService {
         }
 
         String upperCase = romanNumeral.toUpperCase(Locale.ROOT);
-        if (!Pattern.matches(upperCase, "[MDCLXVI]+")) {
+        if (!PATTERN.matcher(upperCase).matches()) {
             throw new IllegalArgumentException(
                     "Invalid argument been detected, "
                             + "please use values within expected range "
                             + "[M, D, C, L, X, V, I].");
         }
 
+        return transformRomanNumeralsToNumbers(upperCase);
+    }
+
+    private static int transformRomanNumeralsToNumbers(String upperCase) {
         Map<Character, Integer> romanToNumberMap = new HashMap<>();
         romanToNumberMap.put('I', 1);
         romanToNumberMap.put('V', 5);
@@ -44,7 +53,6 @@ public class RomanNumeralsToNumbersService {
                 result += romanToNumberMap.get(upperCase.charAt(i));
             }
         }
-
         return result;
     }
 }
