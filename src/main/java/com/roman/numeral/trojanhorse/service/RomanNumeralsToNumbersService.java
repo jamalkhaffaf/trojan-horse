@@ -18,7 +18,11 @@ public final class RomanNumeralsToNumbersService {
      */
     private static final Pattern PATTERN = Pattern.compile("[MDCLXVI]+");
 
-    public static int convert(String romanNumeral) {
+    /**
+     * @param romanNumeral to be converted into numbers.
+     * @return expected numbers to be returned.
+     */
+    public int convert(final String romanNumeral) {
 
         if (romanNumeral == null || romanNumeral.isEmpty()) {
             throw new IllegalArgumentException(

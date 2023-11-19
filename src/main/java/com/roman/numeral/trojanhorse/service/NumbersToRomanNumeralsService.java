@@ -45,7 +45,11 @@ public final class NumbersToRomanNumeralsService {
      */
     private static final int TEN_DEVIDER = 10;
 
-    public static String covert(final int number) {
+    /**
+     * @param number to be converted to Roman Numerals.
+     * @return Roman Numerals.
+     */
+    public String covert(final int number) {
 
         if (number < MINIMUM_ACCEPTED_ROMAN_NUMERAL
                 || number > MAXIMUM_ACCEPTED_ROMAN_NUMERAL) {
