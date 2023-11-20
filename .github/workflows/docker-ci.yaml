@@ -1,11 +1,9 @@
 name: Docker CI
 
 on:
-  workflow_run:
-    workflows: [Build CI]
-    types:
-      - completed
-    branches: [main]
+  push:
+    branches:
+      - 'main'
   workflow_dispatch:
 
 jobs:
