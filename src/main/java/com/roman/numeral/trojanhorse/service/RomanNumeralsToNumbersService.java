@@ -1,24 +1,46 @@
 package com.roman.numeral.trojanhorse.service;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
+import java.util.regex.Pattern;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RomanNumeralsToNumbersService {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class RomanNumeralsToNumbersService {
 
-    public int convert(String romanNumeral) {
+    /**
+     * Validate correct Roman Numeral symbols.
+     */
+    private static final Pattern PATTERN = Pattern.compile("[MDCLXVI]+");
+
+    /**
+     * @param romanNumeral to be converted into numbers.
+     * @return expected numbers to be returned.
+     */
+    public int convert(final String romanNumeral) {
 
         if (romanNumeral == null || romanNumeral.isEmpty()) {
-            throw new IllegalArgumentException("Invalid argument been used, Null or Empty are not valid!");
+            throw new IllegalArgumentException(
+                    "Invalid argument been used, Null or Empty are not valid!");
         }
 
-        romanNumeral = romanNumeral.toUpperCase();
-        if (!romanNumeral.matches("[MDCLXVI]+")) {
-            throw new IllegalArgumentException("Invalid argument been detected, please use values within expected range [M, D, C, L, X, V, I].");
+        String upperCase = romanNumeral.toUpperCase(Locale.ROOT);
+        if (!PATTERN.matcher(upperCase).matches()) {
+            throw new IllegalArgumentException(
+                    "Invalid argument been detected, "
+                            + "please use values within expected range "
+                            + "[M, D, C, L, X, V, I].");
         }
-        
+
+        return transformRomanNumeralsToNumbers(upperCase);
+    }
+
+    private static int transformRomanNumeralsToNumbers(final String upperCase) {
         Map<Character, Integer> romanToNumberMap = new HashMap<>();
         romanToNumberMap.put('I', 1);
         romanToNumberMap.put('V', 5);
@@ -27,16 +49,17 @@ public class RomanNumeralsToNumbersService {
         romanToNumberMap.put('C', 100);
         romanToNumberMap.put('D', 500);
         romanToNumberMap.put('M', 1000);
-        
+
         int result = 0;
-        for (int i = 0; i < romanNumeral.length(); i++) {
-            if (i > 0 && romanToNumberMap.get(romanNumeral.charAt(i)) > romanToNumberMap.get(romanNumeral.charAt(i - 1))) {
-                result += romanToNumberMap.get(romanNumeral.charAt(i)) - 2 * romanToNumberMap.get(romanNumeral.charAt(i - 1));
+        for (int i = 0; i < upperCase.length(); i++) {
+            if (i > 0 && romanToNumberMap.get(upperCase.charAt(i))
+                    > romanToNumberMap.get(upperCase.charAt(i - 1))) {
+                result += romanToNumberMap.get(upperCase.charAt(i)) - 2
+                        * romanToNumberMap.get(upperCase.charAt(i - 1));
             } else {
-                result += romanToNumberMap.get(romanNumeral.charAt(i));
+                result += romanToNumberMap.get(upperCase.charAt(i));
             }
         }
-
         return result;
     }
 }

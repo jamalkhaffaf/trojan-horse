@@ -1,0 +1,27 @@
+name: Checkstyle CI
+
+on:
+  workflow_run:
+    workflows: [Build CI]
+    types:
+      - completed
+
+jobs:
+  checkstyle_job:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    name: Checkstyle job
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Run check style
+        uses: nikitasavinov/checkstyle-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: 'github-pr-check'
+          checkstyle_config: 'sun_checks.xml'
+          workdir: './src/main/java'
+          level: 'error'
+          fail_on_error: 'false'
+          tool_name: 'reviewdog'
