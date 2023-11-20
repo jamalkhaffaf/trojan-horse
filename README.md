@@ -77,6 +77,10 @@ Currently the API only supports converting `Numbers` to `Roman Numerals`. Use fo
 
 * ~~Add `Dockerfile` for application to run on any platform~~
 * ~~Add `Github Actions` CI/CD~~
-* Publish latest artifacts from `Github Actions` to `Docker Repository`
+  * ~~Build and test CI~~
+  * ~~Checkstyle CI~~
+    * ~~Use sun code conventions Ref: https://checkstyle.sourceforge.io/~~
+  * ~~Docker CI~~
+    * ~~Publish only latest artifacts from main branch to `Docker Repository`~~
 * Implement `RomanNumeralsToNumbersController` API
 * Implement `Basic Auth` 
